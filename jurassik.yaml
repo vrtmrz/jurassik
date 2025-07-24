@@ -1,0 +1,44 @@
+version: "1.0"
+processes:
+    - name: server
+      command: deno
+      args:
+          - task
+          - message
+      cwd: .
+      stdout: ./logs/server.log
+      stderr: ./logs/server_error.log
+    - name: echo
+      description: "Echoes a message"
+      command: deno
+      args:
+          - task
+          - echo
+          - "Hello, World!"
+      cwd: .
+      stdout: ./logs/echo.log
+      stderr: ./logs/echo_error.log
+    - name: restart
+      description: "Restarts app"
+      command: deno
+      args:
+          - task
+          - restart
+      cwd: .
+      stdout: ./logs/restart.log
+      stderr: ./logs/restart_error.log
+      maxRestart: 10
+      # restart: serverPanic
+      restart: restart
+    - name: dummyserver
+      description: "A dummy server for testing"
+      command: deno
+      args:
+          - serve
+          - --allow-net
+          - ./test_scripts/dummyserver.ts
+      cwd: .
+      stdout: ./logs/dummyserver.log
+      stderr: ./logs/dummyserver_error.log
+      maxRestart: 9999
+      restart: restart
