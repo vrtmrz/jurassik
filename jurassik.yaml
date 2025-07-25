@@ -4,16 +4,16 @@ processes:
       command: deno
       args:
           - task
-          - message
+          - test:message
       cwd: .
-      stdout: ./logs/server.log
+      stdout: ./logs/all.log
       stderr: ./logs/server_error.log
     - name: echo
       description: "Echoes a message"
       command: deno
       args:
           - task
-          - echo
+          - test:echo
           - "Hello, World!"
       cwd: .
       stdout: ./logs/echo.log
@@ -23,7 +23,7 @@ processes:
       command: deno
       args:
           - task
-          - restart
+          - test:restart
       cwd: .
       stdout: ./logs/restart.log
       stderr: ./logs/restart_error.log
@@ -34,9 +34,8 @@ processes:
       description: "A dummy server for testing"
       command: deno
       args:
-          - serve
-          - --allow-net
-          - ./test_scripts/dummyserver.ts
+          - task
+          - test:dummyserver
       cwd: .
       stdout: ./logs/dummyserver.log
       stderr: ./logs/dummyserver_error.log

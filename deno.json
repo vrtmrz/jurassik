@@ -1,14 +1,20 @@
 {
+    "version": "0.0.1",
+    "license": "Apache-2.0",
     "tasks": {
         "dev": "deno run --watch main.ts",
-        "message": "deno run test_scripts/message.ts",
-        "echo": "deno run test_scripts/echo.ts",
-        "restart": "deno run test_scripts/restart.ts",
-        "dummyserver": "deno run --allow-net test_scripts/dummyserver.ts"
+        "test:message": "deno run test_scripts/message.ts",
+        "test:echo": "deno run test_scripts/echo.ts",
+        "test:restart": "deno run test_scripts/restart.ts",
+        "test:dummyserver": "deno serve --allow-net test_scripts/dummyserver.ts"
     },
     "imports": {
         "@std/cli": "jsr:@std/cli@^1.0.21",
         "js-yaml": "npm:js-yaml@^4.1.0",
         "octagonal-wheels": "npm:octagonal-wheels@^0.1.37"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "lineWidth": 120
     }
 }
