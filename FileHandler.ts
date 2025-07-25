@@ -1,4 +1,4 @@
-import { serialized } from "octagonal-wheels/concurrency/lock_v2.js";
+import { serialized } from "octagonal-wheels/concurrency/lock";
 import { ensureDir } from "./paths.ts";
 
 let teeStdError: boolean = false;
